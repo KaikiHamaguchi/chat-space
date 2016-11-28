@@ -4,8 +4,8 @@
 
 ###association
 
-* has_many :chat_members
-* has_many :groups, through: :chat_members
+* has_many :user_groups
+* has_many :groups, through: :user_groups
 * has_many :messages
 
 ###column
@@ -15,7 +15,7 @@
 * t.string  :email
 * t.string  :password
 
-## Chat_members_table
+## User_groups_table
 
 ###association
 
@@ -32,8 +32,8 @@
 
 ###association
 
-* has_many :chat_members
-* has_many :users, through: :chat_members
+* has_many :user_groups
+* has_many :users, through: :user_groups
 * has_many :messages
 
 ### column
