@@ -1,24 +1,56 @@
-# README
+#Chat-SpaceDB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Users_table
 
-Things you may want to cover:
+###association
 
-* Ruby version
+* has_many :user_groups
+* has_many :groups, through: :user_groups
+* has_many :messages
 
-* System dependencies
+###column
 
-* Configuration
+* t.integer :id
+* t.string  :name
+* t.string  :email
+* t.string  :password
 
-* Database creation
+## User_groups_table
 
-* Database initialization
+###association
 
-* How to run the test suite
+* belongs_to :user
+* belongs_to :group
 
-* Services (job queues, cache servers, search engines, etc.)
+### column
 
-* Deployment instructions
+* t.integer :id
+* t.references :user
+* t.references :group
 
-* ...
+## Groups_table
+
+###association
+
+* has_many :user_groups
+* has_many :users, through: :user_groups
+* has_many :messages
+
+### column
+
+* t.integer :id
+* t.string :name
+
+## Messages_table
+
+###association
+* message belongs_to :user
+* message belongs_to :group
+
+###column
+
+* t.integer :id
+* t.text :body
+* t.string :image
+* t.references :user
+* t.references :group
